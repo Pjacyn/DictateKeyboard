@@ -90,6 +90,50 @@ lifetime updates. Just tap the badge above or [this link](https://play.google.co
 > **Existing users:** the new keyboard keeps the same app identity and signing key, so your
 > settings carry over on update — no reinstall, no lost configuration.
 
+### Installing the APK from GitHub Releases (sideloading)
+
+Signed APKs are attached to each [GitHub release](../../releases) (built by CI on `v*` tags).
+Android and Play Protect put up some hurdles for apps installed outside the Play Store:
+
+1. **Allow installs from your browser/file manager.** Android asks once: *Settings → Install unknown apps*.
+2. **"App blocked to protect your device" (Play Protect).** Dictate declares an accessibility service,
+   and Play Protect hard-blocks sideloaded apps that do — there is no "Install anyway" button. Workaround:
+   - Play Store → profile icon → **Play Protect** → gear icon → turn off **Scan apps with Play Protect**.
+   - Install the APK, then turn scanning back on. The installed app stays.
+3. **Samsung:** if the install is still blocked, turn off **Settings → Security and privacy → Auto Blocker** for the install.
+4. **Accessibility service can't be enabled (greyed out).** Android 13+ restricts it for sideloaded apps:
+   *Settings → Apps → Dictate → ⋮ → Allow restricted settings*, then enable the service.
+5. **Updates.** Releases are signed with a stable key, so a new APK installs over the old one and keeps your
+   settings and API keys. Play Protect may warn again on each update; repeat step 2.
+
+### Suggested OpenRouter models (Polish + English)
+
+Prices from the OpenRouter catalog on 2026-10-31; check the catalog for current values.
+Accuracy notes are general reputation, not benchmarks run on this app.
+
+**Transcription** (price per audio hour unless noted):
+
+| Use | Model | Approx. price |
+|---|---|---|
+| Best value (start here) | `openai/whisper-large-v3-turbo` | $0.012/h |
+| Best quality, esp. Polish | `elevenlabs/scribe-v2` | $0.22/h |
+| Alternative | `openai/gpt-4o-transcribe` | $0.009/h + output tokens |
+| Alternative | `google/gemini-3.5-transcribe` | $2 in / $12 out per M tokens |
+
+Avoid `microsoft/mai-transcribe-*` and `google/chirp-3` for this use (far more expensive).
+
+**Rewording** (chat models, $ per M tokens in/out):
+
+| Use | Model | Price |
+|---|---|---|
+| Default | `anthropic/claude-haiku-5.5` | 0.10 / 0.50 |
+| Cheaper alternative | `openai/gpt-6-luna` | 0.10 / 0.50 |
+| Gemini option | `google/gemini-3.1-flash-lite` | 0.25 / 1.5 |
+| Better style/tone | `anthropic/claude-sonnet-5.5` | 2 / 10 |
+| Budget | `deepseek/deepseek-v4.1-flash` | 0.04 / 0.50 |
+
+Skip reasoning/thinking variants for rewording: they add latency and cost without helping short rewrites.
+
 <br>
 
 ## ✨ What is Dictate?
