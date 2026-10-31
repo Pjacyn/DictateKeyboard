@@ -106,6 +106,34 @@ Android and Play Protect put up some hurdles for apps installed outside the Play
 5. **Updates.** Releases are signed with a stable key, so a new APK installs over the old one and keeps your
    settings and API keys. Play Protect may warn again on each update; repeat step 2.
 
+### Suggested OpenRouter models (Polish + English)
+
+Prices from the OpenRouter catalog on 2026-10-31; check the catalog for current values.
+Accuracy notes are general reputation, not benchmarks run on this app.
+
+**Transcription** (price per audio hour unless noted):
+
+| Use | Model | Approx. price |
+|---|---|---|
+| Best value (start here) | `openai/whisper-large-v3-turbo` | $0.012/h |
+| Best quality, esp. Polish | `elevenlabs/scribe-v2` | $0.22/h |
+| Alternative | `openai/gpt-4o-transcribe` | $0.009/h + output tokens |
+| Alternative | `google/gemini-3.5-transcribe` | $2 in / $12 out per M tokens |
+
+Avoid `microsoft/mai-transcribe-*` and `google/chirp-3` for this use (far more expensive).
+
+**Rewording** (chat models, $ per M tokens in/out):
+
+| Use | Model | Price |
+|---|---|---|
+| Default | `anthropic/claude-haiku-5.5` | 0.10 / 0.50 |
+| Cheaper alternative | `openai/gpt-6-luna` | 0.10 / 0.50 |
+| Gemini option | `google/gemini-3.1-flash-lite` | 0.25 / 1.5 |
+| Better style/tone | `anthropic/claude-sonnet-5.5` | 2 / 10 |
+| Budget | `deepseek/deepseek-v4.1-flash` | 0.04 / 0.50 |
+
+Skip reasoning/thinking variants for rewording: they add latency and cost without helping short rewrites.
+
 <br>
 
 ## ✨ What is Dictate?
