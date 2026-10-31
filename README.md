@@ -108,19 +108,22 @@ Android and Play Protect put up some hurdles for apps installed outside the Play
 
 ### Suggested OpenRouter models (Polish + English)
 
-Prices from the OpenRouter catalog on 2026-10-31; check the catalog for current values.
+Chat prices ($ per M tokens) are from the OpenRouter catalog on 2026-10-31; check for current values.
 Accuracy notes are general reputation, not benchmarks run on this app.
 
-**Transcription** (price per audio hour unless noted):
+**Transcription.** OpenRouter's `pricing.prompt` field is *not* normalized (the unit differs per model:
+per second, minute or hour), so read prices off each model's page on openrouter.ai, not the raw API.
+Values below were verified in the app source on 2026-09-04; models not listed there have no price here.
 
-| Use | Model | Approx. price |
+| Use | Model | Price |
 |---|---|---|
-| Best value (start here) | `openai/whisper-large-v3-turbo` | $0.012/h |
-| Best quality, esp. Polish | `elevenlabs/scribe-v2` | $0.22/h |
-| Alternative | `openai/gpt-4o-transcribe` | $0.009/h + output tokens |
-| Alternative | `google/gemini-3.5-transcribe` | $2 in / $12 out per M tokens |
+| Cheapest (start here) | `openai/whisper-large-v3-turbo` | cheapest on OpenRouter (DeepInfra, Groq) |
+| Multilingual, code-switching PL/EN | `microsoft/mai-transcribe-2` | $0.10/h |
+| Alternative | `openai/gpt-transcribe` | $0.0045/min |
+| Alternative | `mistralai/voxtral-mini-transcribe` | $0.003/min |
+| Alternative | `deepgram/nova-3` | $0.0043/min |
 
-Avoid `microsoft/mai-transcribe-*` and `google/chirp-3` for this use (far more expensive).
+Other STT models (`elevenlabs/scribe-v2`, `google/gemini-3.5-transcribe`, ...) exist; check their pages for price.
 
 **Rewording** (chat models, $ per M tokens in/out):
 
