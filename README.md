@@ -90,6 +90,22 @@ lifetime updates. Just tap the badge above or [this link](https://play.google.co
 > **Existing users:** the new keyboard keeps the same app identity and signing key, so your
 > settings carry over on update — no reinstall, no lost configuration.
 
+### Installing the APK from GitHub Releases (sideloading)
+
+Signed APKs are attached to each [GitHub release](../../releases) (built by CI on `v*` tags).
+Android and Play Protect put up some hurdles for apps installed outside the Play Store:
+
+1. **Allow installs from your browser/file manager.** Android asks once: *Settings → Install unknown apps*.
+2. **"App blocked to protect your device" (Play Protect).** Dictate declares an accessibility service,
+   and Play Protect hard-blocks sideloaded apps that do — there is no "Install anyway" button. Workaround:
+   - Play Store → profile icon → **Play Protect** → gear icon → turn off **Scan apps with Play Protect**.
+   - Install the APK, then turn scanning back on. The installed app stays.
+3. **Samsung:** if the install is still blocked, turn off **Settings → Security and privacy → Auto Blocker** for the install.
+4. **Accessibility service can't be enabled (greyed out).** Android 13+ restricts it for sideloaded apps:
+   *Settings → Apps → Dictate → ⋮ → Allow restricted settings*, then enable the service.
+5. **Updates.** Releases are signed with a stable key, so a new APK installs over the old one and keeps your
+   settings and API keys. Play Protect may warn again on each update; repeat step 2.
+
 <br>
 
 ## ✨ What is Dictate?
